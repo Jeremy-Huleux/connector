@@ -146,7 +146,7 @@ public class CreerConnexion {
          * 
          * 
          * 
-         */
+         *//*
         str = "INSERT INTO agence (noMag) VALUES\n"
 				+ "('sud-est'),\n"
 				+ "('sud-ouest'),\n"
@@ -229,9 +229,28 @@ public class CreerConnexion {
 				+ "(2, 7, 3, 120),\n"
 				+ "(2, 8, 3, 999);";
 		ps = cnx.prepareStatement(str);
-		ps.execute();
-        
-        
+		ps.execute();*/
+        /*
+         * 
+         * 
+         * REQUETES EXO AVC RESULTAT
+         * 
+         * 
+         */
+        // REQUETE N1 : 
+		str = "SELECT p.refProd, p.desiProd "
+				+ "FROM produit p "
+				+ "WHERE p.refProd < 15 "
+				+ "OR p.refProd BETWEEN 30 AND 40 "
+				+ "OR p.refProd >= 70 "
+				+ "ORDER BY p.desiProd ASC ";
+		st = cnx.createStatement();
+        rs = st.executeQuery(str);
+		
+        while (rs.next()) {
+            System.out.println("Numéro : " + rs.getInt("refProd") + 
+            		", Le nom : " + rs.getString("desiProd"));
+        }
         // Requêtes avec retour de résultat : Le résultat TOUJOURS est un TABLEAU
 
         // Requêtes d'interrogation
